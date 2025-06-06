@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Synqly</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
+    :root {
+      --primary: #5c8fa7;
+      --accent: #d2e1e9;
+      --dark: #2b4c5a;
+      --light: #f9f9f9;
+      --font: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: var(--font);
+      background-color: var(--light);
       color: #333;
-      background-color: #f9f9f9;
     }
 
     header.hero {
-      background: #95b0bc;
+      background: var(--primary);
       color: white;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem 4rem;
+      position: relative;
     }
 
     .logo {
-      width: 120px;
+      width: 100px;
       margin-bottom: 1rem;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    h1 {
+      margin: 0.5rem 0;
+      font-size: 2.5rem;
+    }
+
+    p.tagline {
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
 
     section {
-      padding: 3rem 2rem;
-      max-width: 800px;
+      padding: 4rem 2rem;
+      max-width: 900px;
       margin: auto;
     }
 
     h2 {
-      color: #2b4c5a;
+      color: var(--dark);
+      margin-bottom: 1rem;
     }
 
     .services ul {
@@ -41,82 +66,116 @@
     }
 
     .services li {
-      background: #e4ecf0;
+      background: var(--accent);
       margin: 1rem 0;
-      padding: 1rem;
-      border-left: 5px solid #95b0bc;
+      padding: 1.2rem;
+      border-left: 6px solid var(--primary);
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .services li:hover {
+      transform: translateX(5px);
     }
 
     .contact form {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 1rem;
     }
 
     .contact input,
+    .contact select,
     .contact textarea {
-      padding: 0.75rem;
+      padding: 0.9rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 1rem;
     }
 
     .contact button {
-      background-color: #95b0bc;
+      background-color: var(--primary);
       color: white;
-      padding: 0.75rem;
+      padding: 0.9rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .contact button:hover {
+      background-color: var(--dark);
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #2b4c5a;
+      padding: 1.5rem;
+      background: var(--dark);
       color: white;
+      margin-top: 2rem;
     }
 
     a {
-      color: #2b4c5a;
+      color: var(--dark);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .services li {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header class="hero">
-    <img src="logo.png" alt="Synqly Logo" class="logo">
+    <img src="logo.png" alt="Synqly Logo" class="logo"/>
     <h1>Welcome to Synqly</h1>
-    <p>Connecting ideas with trust and collaboration</p>
+    <p class="tagline">Connecting ideas with trust and collaboration</p>
   </header>
 
   <section class="about">
     <h2>About Us</h2>
-    <p>At Synqly, we believe strong connections build stronger outcomes. We specialize in syncing professionals and solutions to power your mission through collaborative excellence.</p>
+    <p>
+      At Synqly, we believe that strong connections empower stronger outcomes. We're here to align 
+      innovators, creators, and organizations to accelerate progress through seamless collaboration.
+    </p>
   </section>
 
   <section class="services">
-    <h2>What We Do</h2>
+    <h2>Our Services</h2>
     <ul>
-      <li><strong>Strategic Consulting:</strong> Guidance to align your ideas with execution.</li>
-      <li><strong>Brand Collaboration:</strong> Creating meaningful partnerships.</li>
-      <li><strong>Workflow Optimization:</strong> Tools and insights to streamline your operations.</li>
+      <li><strong>Strategic Consulting:</strong> Aligning your vision with results-driven plans.</li>
+      <li><strong>Brand Partnerships:</strong> Facilitating high-impact influencer and corporate collaborations.</li>
+      <li><strong>Workflow Intelligence:</strong> Automating and optimizing internal processes using smart tools.</li>
+      <li><strong>Data-Driven Insights:</strong> Leveraging metrics to guide decisions and innovation.</li>
     </ul>
   </section>
 
   <section class="contact">
     <h2>Contact Us</h2>
     <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
+      <input type="text" name="name" placeholder="Your Full Name" required />
+      <input type="email" name="email" placeholder="Your Email Address" required />
+      <select name="identity" required>
+        <option value="" disabled selected>Are you contacting as a...</option>
+        <option value="company">Company / Brand</option>
+        <option value="influencer">Influencer / Individual</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="message" rows="5" placeholder="Tell us more about your goals..." required></textarea>
+      <button type="submit">Send Message</button>
     </form>
-    <p>Or connect on <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></p>
+    <p style="margin-top: 1rem;">
+      Or connect via <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    </p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Synqly. All rights reserved.</p>
+    <p>&copy; 2025 Synqly. Built with clarity and purpose.</p>
   </footer>
 </body>
 </html>

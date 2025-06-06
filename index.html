@@ -2,272 +2,310 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synqly</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-    <style>
-        :root {
-            --primary: #5c8fa7;
-            --accent: #d2e1e9;
-            --dark: #2b4c5a;
-            --light: #f9f9f9;
-            --font: 'Inter', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synqly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #5c8fa7;
+      --accent: #d2e1e9;
+      --dark: #2b4c5a;
+      --light: #f9f9f9;
+      --font: 'Inter', sans-serif;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            font-family: var(--font);
-            background: linear-gradient(135deg, #f9f9f9, #eef5f8);
-            color: #333;
-            overflow-x: hidden;
-        }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: linear-gradient(135deg, #f9f9f9, #eef5f8);
+      color: #333;
+      overflow-x: hidden;
+    }
 
-        header.hero {
-            background: linear-gradient(135deg, var(--primary), #6ea4bc);
-            color: white;
-            text-align: center;
-            padding: 5rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
+    header.hero {
+      background: linear-gradient(135deg, var(--primary), #6ea4bc);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
+    .floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 10s infinite ease-in-out;
-        }
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 10s infinite ease-in-out;
+    }
 
-        .circle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            left: 10%;
-            top: 20%;
-        }
+    .circle:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      left: 10%;
+      top: 20%;
+    }
 
-        .circle:nth-child(2) {
-            width: 50px;
-            height: 50px;
-            left: 70%;
-            top: 30%;
-            animation-delay: 3s;
-        }
+    .circle:nth-child(2) {
+      width: 50px;
+      height: 50px;
+      left: 70%;
+      top: 30%;
+      animation-delay: 3s;
+    }
 
-        .circle:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            left: 50%;
-            top: 10%;
-            animation-delay: 5s;
-        }
+    .circle:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      left: 50%;
+      top: 10%;
+      animation-delay: 5s;
+    }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
 
-            50% {
-                transform: translateY(-30px);
-            }
+      50% {
+        transform: translateY(-30px);
+      }
 
-            100% {
-                transform: translateY(0);
-            }
-        }
+      100% {
+        transform: translateY(0);
+      }
+    }
 
-        .logo {
-            width: 100px;
-            margin-bottom: 1rem;
-            z-index: 1;
-            position: relative;
-        }
+    .logo {
+      width: 100px;
+      margin-bottom: 1rem;
+      z-index: 1;
+      position: relative;
+    }
 
-        h1 {
-            font-size: 3rem;
-            margin: 0.5rem 0;
-            z-index: 1;
-            position: relative;
-        }
+    h1 {
+      font-size: 3rem;
+      margin: 0.5rem 0;
+      z-index: 1;
+      position: relative;
+    }
 
-        p.tagline {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            z-index: 1;
-            position: relative;
-        }
+    p.tagline {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      z-index: 1;
+      position: relative;
+    }
 
-        section {
-            padding: 4rem 2rem;
-            max-width: 900px;
-            margin: auto;
-        }
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
 
-        h2 {
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
+    h2 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
 
-        .services ul {
-            list-style: none;
-            padding-left: 0;
-        }
+    .services ul {
+      list-style: none;
+      padding-left: 0;
+    }
 
-        .services li {
-            background: var(--accent);
-            margin: 1rem 0;
-            padding: 1.2rem;
-            border-left: 6px solid var(--primary);
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
+    .services li {
+      background: var(--accent);
+      margin: 1rem 0;
+      padding: 1.2rem;
+      border-left: 6px solid var(--primary);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
 
-        .services li:hover {
-            transform: translateX(10px) scale(1.03);
-        }
+    .services li:hover {
+      transform: translateX(10px) scale(1.03);
+    }
 
-        .contact form {
-            display: grid;
-            gap: 1rem;
-            animation: pop-in 0.8s ease forwards;
-        }
+    /* Updated Contact Form Styling */
+    .contact form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fade-in 0.6s ease-out forwards;
+    }
 
-        @keyframes pop-in {
-            from {
-                transform: scale(0.9);
-                opacity: 0;
-            }
+    .contact input,
+    .contact select,
+    .contact textarea {
+      width: 100%;
+      padding: 0.5rem 0;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      font-size: 1rem;
+    }
 
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+    .contact input::placeholder,
+    .contact textarea::placeholder {
+      color: #999;
+    }
 
-        .contact input,
-        .contact select,
-        .contact textarea {
-            padding: 0.9rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
+    .contact input:focus,
+    .contact select:focus,
+    .contact textarea:focus {
+      outline: none;
+      border-bottom-color: var(--primary);
+    }
 
-        .contact button {
-            background-color: var(--primary);
-            color: white;
-            padding: 0.9rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
+    .contact textarea {
+      grid-column: 1 / -1;
+    }
 
-        .contact button:hover {
-            background-color: var(--dark);
-            transform: scale(1.05);
-        }
+    .contact form button {
+      grid-column: 1 / -1;
+      justify-self: center;
+      margin-top: 1rem;
+      padding: 0.75rem 2rem;
+      border: 2px solid var(--dark);
+      background: white;
+      color: var(--dark);
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
 
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--dark);
-            color: white;
-            margin-top: 2rem;
-        }
+    .contact form button:hover {
+      background: var(--primary);
+      color: white;
+    }
 
-        a {
-            color: var(--dark);
-        }
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2rem;
-            }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-            .services li {
-                padding: 1rem;
-            }
-        }
-    </style>
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .services li {
+        padding: 1rem;
+      }
+
+      .contact form {
+        grid-template-columns: 1fr;
+      }
+
+      .contact form button {
+        width: 100%;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--dark);
+      color: white;
+      margin-top: 2rem;
+    }
+
+    a {
+      color: var(--dark);
+    }
+  </style>
 </head>
 
 <body>
-    <header class="hero">
-        <div class="floating-shapes">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
-        </div>
-        <img src="logo.png" alt="Synqly Logo" class="logo" />
-        <h1 data-aos="fade-down">Welcome to Synqly</h1>
-        <p class="tagline" data-aos="fade-up" data-aos-delay="200">Connecting ideas with trust and collaboration</p>
-    </header>
+  <header class="hero">
+    <div class="floating-shapes">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <img src="logo.png" alt="Synqly Logo" class="logo" />
+    <h1 data-aos="fade-down">Welcome to Synqly</h1>
+    <p class="tagline" data-aos="fade-up" data-aos-delay="200">Connecting ideas with trust and collaboration</p>
+  </header>
 
-    <section class="about" data-aos="fade-right">
-        <h2>About Us</h2>
-        <p>
-            The company specialises in consumer acquisition through targeted social media marketing by enabling transparent and free market interaction between influencers and organisations.
-        </p>
-    </section>
+  <section class="about" data-aos="fade-right">
+    <h2>About Us</h2>
+    <p>
+      At Synqly, we believe that strong connections empower stronger outcomes. We're here to align
+      innovators, creators, and organizations to accelerate progress through seamless collaboration.
+    </p>
+  </section>
 
-    <section class="services" data-aos="fade-left">
-        <h2>Our Services</h2>
-        <ul>
-            <li><strong>Strategic Consulting:</strong> Aligning your vision with results-driven plans.</li>
-            <li><strong>Brand Partnerships:</strong> Facilitating high-impact influencer and corporate collaborations.</li>
-            <li><strong>Workflow Intelligence:</strong> Automating and optimizing internal processes using smart tools.</li>
-            <li><strong>Data-Driven Insights:</strong> Leveraging metrics to guide decisions and innovation.</li>
-        </ul>
-    </section>
+  <section class="services" data-aos="fade-left">
+    <h2>Our Services</h2>
+    <ul>
+      <li><strong>Strategic Consulting:</strong> Aligning your vision with results-driven plans.</li>
+      <li><strong>Brand Partnerships:</strong> Facilitating high-impact influencer and corporate collaborations.</li>
+      <li><strong>Workflow Intelligence:</strong> Automating and optimizing internal processes using smart tools.</li>
+      <li><strong>Data-Driven Insights:</strong> Leveraging metrics to guide decisions and innovation.</li>
+    </ul>
+  </section>
 
-    <section class="contact" data-aos="zoom-in">
-        <h2>Contact Us</h2>
-        <form>
-            <input type="text" name="name" placeholder="Your Full Name" required />
-            <input type="email" name="email" placeholder="Your Email Address" required />
-            <select name="identity" required>
-                <option value="" disabled selected>Are you contacting as a...</option>
-                <option value="company">Company / Brand</option>
-                <option value="influencer">Influencer / Individual</option>
-                <option value="other">Other</option>
-            </select>
-            <textarea name="message" rows="5" placeholder="Tell us more about your goals..." required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <p style="margin-top: 1rem;">
-            Or connect via <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-        </p>
-    </section>
+  <section class="contact" data-aos="zoom-in">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" name="name" placeholder="Your Full Name" required />
+      <input type="email" name="email" placeholder="Your Email Address" required />
+      <select name="identity" required>
+        <option value="" disabled selected>Are you contacting as a...</option>
+        <option value="company">Company / Brand</option>
+        <option value="influencer">Influencer / Individual</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="message" rows="5" placeholder="Tell us more about your goals..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p style="margin-top: 1rem;">
+      Or connect via <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    </p>
+  </section>
 
-    <footer data-aos="fade-up">
-        <p>&copy; 2025 Synqly. Built with clarity and purpose.</p>
-    </footer>
+  <footer data-aos="fade-up">
+    <p>&copy; 2025 Synqly. Built with clarity and purpose.</p>
+  </footer>
 
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-    </script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
 </body>
 
 </html>

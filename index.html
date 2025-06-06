@@ -99,50 +99,29 @@
       list-style: none;
       padding-left: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
 
     .services li {
       background: #fff;
       margin: 0;
-      padding: 1.5rem;
+      padding: 1.5rem 2rem;
       border-radius: 0.75rem;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       font-weight: 500;
       color: #374151;
       user-select: none;
-      animation: floatSideways 6s ease-in-out infinite alternate;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
       will-change: transform;
-    }
-
-    .services li:nth-child(odd) {
-      animation-duration: 5.5s;
-      animation-direction: alternate-reverse;
     }
 
     .services li:hover {
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
       transform: translateY(-6px) scale(1.03);
-      animation-play-state: paused;
     }
 
-    @keyframes floatSideways {
-      0% {
-        transform: translateX(0) translateY(0);
-      }
-
-      50% {
-        transform: translateX(10px) translateY(4px);
-      }
-
-      100% {
-        transform: translateX(0) translateY(0);
-      }
-    }
-
-    /* Sleeker, aligned Contact Form Styling */
+    /* Contact Form */
     .contact form {
       max-width: 480px;
       margin: 0 auto;
@@ -211,6 +190,20 @@
       outline: none;
     }
 
+    /* New contact info style */
+    .contact-info {
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: 600;
+      color: #2b4c5a;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .contact-info p {
+      margin: 0.4rem 0;
+    }
+
     @media (max-width: 768px) {
       .contact form {
         max-width: 90%;
@@ -252,24 +245,33 @@
 <body>
   <header class="hero">
     <img src="logo.png" alt="Synqly Logo" class="logo" />
-    <h1 data-aos="fade-down">Synqly</h1>
+    <h1 data-aos="fade-down">Welcome to Synqly</h1>
     <p class="tagline" data-aos="fade-up" data-aos-delay="200">Connecting ideas with trust and collaboration</p>
   </header>
 
   <section class="about" data-aos="fade-right">
     <h2>About Us</h2>
     <p>
-     The company specialises in consumer acquisition through targeted social media marketing by enabling transparent and free market interaction between influencers and organisations.
+      At Synqly, we believe that strong connections empower stronger outcomes. We're here to align innovators,
+      creators, and organizations to accelerate progress through seamless collaboration.
     </p>
   </section>
 
   <section class="services" data-aos="fade-left">
     <h2>Our Services</h2>
     <ul>
-      <li><strong>Strategic Consulting:</strong> Aligning your vision with results-driven plans.</li>
-      <li><strong>Brand Partnerships:</strong> Facilitating high-impact influencer and corporate collaborations.</li>
-      <li><strong>Workflow Intelligence:</strong> Automating and optimizing internal processes using smart tools.</li>
-      <li><strong>Data-Driven Insights:</strong> Leveraging metrics to guide decisions and innovation.</li>
+      <li>
+        <strong>Brand Promotion:</strong> Through detailed market research, we ensure that companies are matched with influencers that align perfectly with their needs and goals.
+      </li>
+      <li>
+        <strong>Market Research:</strong> Our service eliminates the hassle of finding work for influencers by directly connecting them with companies looking for promotion.
+      </li>
+      <li>
+        <strong>Influencer & Social Media Marketing:</strong> We provide influencers and social media marketers with projects to get hired and get paid.
+      </li>
+      <li>
+        <strong>Team Formation:</strong> We bring like-minded influencers, shooters, and editors together to form their own creative teams.
+      </li>
     </ul>
   </section>
 
@@ -300,9 +302,11 @@
 
       <button type="submit" aria-label="Send your message to Synqly">Send Message</button>
     </form>
-    <p style="margin-top: 1rem; text-align: center;">
-      Or connect via <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </p>
+
+    <div class="contact-info" aria-label="Company contact information">
+      <p>Email: <a href="mailto:contact@synqly.com">contact@synqly.com</a></p>
+      <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    </div>
   </section>
 
   <footer data-aos="fade-up">

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Synqly</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
@@ -23,236 +23,234 @@
     body {
       margin: 0;
       font-family: var(--font);
-      background: linear-gradient(135deg, #f9f9f9, #eef5f8);
-      color: #333;
+      background: #ffffff;
+      color: #6b7280;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
     header.hero {
-      background: linear-gradient(135deg, var(--primary), #6ea4bc);
-      color: white;
+      background: #ffffff;
+      color: #111827;
       text-align: center;
-      padding: 5rem 2rem 4rem;
+      padding: 6rem 2rem 5rem;
       position: relative;
-      overflow: hidden;
-    }
-
-    .floating-shapes {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      animation: float 10s infinite ease-in-out;
-    }
-
-    .circle:nth-child(1) {
-      width: 80px;
-      height: 80px;
-      left: 10%;
-      top: 20%;
-    }
-
-    .circle:nth-child(2) {
-      width: 50px;
-      height: 50px;
-      left: 70%;
-      top: 30%;
-      animation-delay: 3s;
-    }
-
-    .circle:nth-child(3) {
-      width: 100px;
-      height: 100px;
-      left: 50%;
-      top: 10%;
-      animation-delay: 5s;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-30px);
-      }
-
-      100% {
-        transform: translateY(0);
-      }
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 1.25rem;
     }
 
     .logo {
-      width: 100px;
-      margin-bottom: 1rem;
-      z-index: 1;
+      width: 280px;
+      height: 280px;
+      object-fit: contain;
+      margin: 0 auto;
       position: relative;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      box-shadow: 0px 12px 30px rgba(92, 143, 167, 0.3);
+      border-radius: 50%;
+      background: white;
+      padding: 1.5rem;
+      user-select: none;
+      will-change: transform;
     }
 
     h1 {
-      font-size: 3rem;
-      margin: 0.5rem 0;
-      z-index: 1;
-      position: relative;
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0;
+      max-width: 800px;
+      color: #111827;
+      line-height: 1.2;
+      user-select: none;
     }
 
     p.tagline {
-      font-size: 1.2rem;
-      opacity: 0.95;
-      z-index: 1;
-      position: relative;
+      font-size: 18px;
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto;
+      user-select: none;
     }
 
     section {
       padding: 4rem 2rem;
       max-width: 900px;
-      margin: auto;
+      margin: 0 auto 5rem auto;
+      background: #fafafa;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
     }
 
     h2 {
-      color: var(--dark);
+      color: #111827;
       margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.75rem;
     }
 
+    /* Our Services */
     .services ul {
       list-style: none;
       padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
 
     .services li {
-      background: var(--accent);
-      margin: 1rem 0;
-      padding: 1.2rem;
-      border-left: 6px solid var(--primary);
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      background: #fff;
+      margin: 0;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      font-weight: 500;
+      color: #374151;
+      user-select: none;
+      animation: floatSideways 6s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .services li:nth-child(odd) {
+      animation-duration: 5.5s;
+      animation-direction: alternate-reverse;
     }
 
     .services li:hover {
-      transform: translateX(10px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      transform: translateY(-6px) scale(1.03);
+      animation-play-state: paused;
     }
 
-    /* Updated Contact Form Styling */
+    @keyframes floatSideways {
+      0% {
+        transform: translateX(0) translateY(0);
+      }
+
+      50% {
+        transform: translateX(10px) translateY(4px);
+      }
+
+      100% {
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    /* Sleeker, aligned Contact Form Styling */
     .contact form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fade-in 0.6s ease-out forwards;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      background: #ffffff;
+      border-radius: 0.75rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #2b4c5a;
+      margin-bottom: 0.25rem;
+      display: block;
     }
 
     .contact input,
-    .contact select,
-    .contact textarea {
+    .contact select {
       width: 100%;
-      padding: 0.5rem 0;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid #ccc;
+      padding: 0.75rem 1rem;
+      background: #f9fafb;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
       font-size: 1rem;
+      color: #374151;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
     }
 
-    .contact input::placeholder,
-    .contact textarea::placeholder {
-      color: #999;
+    .contact input::placeholder {
+      color: #9ca3af;
     }
 
     .contact input:focus,
-    .contact select:focus,
-    .contact textarea:focus {
+    .contact select:focus {
       outline: none;
-      border-bottom-color: var(--primary);
+      border-color: var(--primary);
+      background: #fff;
+      box-shadow: 0 0 8px var(--primary);
     }
 
-    .contact textarea {
-      grid-column: 1 / -1;
-    }
-
-    .contact form button {
-      grid-column: 1 / -1;
-      justify-self: center;
+    .contact button {
+      align-self: center;
       margin-top: 1rem;
-      padding: 0.75rem 2rem;
-      border: 2px solid var(--dark);
-      background: white;
-      color: var(--dark);
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 20px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .contact form button:hover {
-      background: var(--primary);
+      background-color: var(--primary);
+      border: none;
+      padding: 1rem 3rem;
+      font-weight: 700;
+      font-size: 1.1rem;
       color: white;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 15px rgba(92, 143, 167, 0.6);
+      width: fit-content;
     }
 
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .contact button:hover,
+    .contact button:focus {
+      background-color: #4a7392;
+      box-shadow: 0 8px 20px rgba(72, 111, 147, 0.8);
+      outline: none;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      .services li {
-        padding: 1rem;
-      }
-
+    @media (max-width: 768px) {
       .contact form {
-        grid-template-columns: 1fr;
+        max-width: 90%;
+        padding: 2rem 1.5rem;
       }
 
-      .contact form button {
-        width: 100%;
+      h1 {
+        font-size: 36px;
+      }
+
+      .logo {
+        width: 200px;
+        height: 200px;
+        padding: 1rem;
       }
     }
 
     footer {
       text-align: center;
-      padding: 1.5rem;
-      background: var(--dark);
-      color: white;
-      margin-top: 2rem;
+      padding: 2rem 1rem;
+      font-size: 14px;
+      background: #f3f4f6;
+      color: #9ca3af;
+      user-select: none;
     }
 
     a {
-      color: var(--dark);
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    a:hover {
+      color: #2c5282;
     }
   </style>
 </head>
 
 <body>
   <header class="hero">
-    <div class="floating-shapes">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-    </div>
     <img src="logo.png" alt="Synqly Logo" class="logo" />
     <h1 data-aos="fade-down">Welcome to Synqly</h1>
     <p class="tagline" data-aos="fade-up" data-aos-delay="200">Connecting ideas with trust and collaboration</p>
@@ -261,8 +259,8 @@
   <section class="about" data-aos="fade-right">
     <h2>About Us</h2>
     <p>
-      At Synqly, we believe that strong connections empower stronger outcomes. We're here to align
-      innovators, creators, and organizations to accelerate progress through seamless collaboration.
+      At Synqly, we believe that strong connections empower stronger outcomes. We're here to align innovators,
+      creators, and organizations to accelerate progress through seamless collaboration.
     </p>
   </section>
 
@@ -276,22 +274,35 @@
     </ul>
   </section>
 
-  <section class="contact" data-aos="zoom-in">
-    <h2>Contact Us</h2>
+  <section class="contact" data-aos="zoom-in" aria-labelledby="contact-us-title">
+    <h2 id="contact-us-title">Contact Us</h2>
     <form>
-      <input type="text" name="name" placeholder="Your Full Name" required />
-      <input type="email" name="email" placeholder="Your Email Address" required />
-      <select name="identity" required>
-        <option value="" disabled selected>Are you contacting as a...</option>
-        <option value="company">Company / Brand</option>
-        <option value="influencer">Influencer / Individual</option>
-        <option value="other">Other</option>
-      </select>
-      <textarea name="message" rows="5" placeholder="Tell us more about your goals..." required></textarea>
-      <button type="submit">Send Message</button>
+      <div>
+        <label for="name">Full Name</label>
+        <input id="name" type="text" name="name" placeholder="Your Full Name" required />
+      </div>
+      <div>
+        <label for="email">Email Address</label>
+        <input id="email" type="email" name="email" placeholder="Your Email Address" required />
+      </div>
+      <div>
+        <label for="phone">Phone Number</label>
+        <input id="phone" type="tel" name="phone" placeholder="Your Phone Number" required pattern="[\d\s\-\+\(\)]{7,}" title="Please enter a valid phone number" />
+      </div>
+      <div>
+        <label for="identity">Contacting as</label>
+        <select id="identity" name="identity" required>
+          <option value="" disabled selected>Are you contacting as a...</option>
+          <option value="company">Company / Brand</option>
+          <option value="influencer">Influencer / Individual</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <button type="submit" aria-label="Send your message to Synqly">Send Message</button>
     </form>
-    <p style="margin-top: 1rem;">
-      Or connect via <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    <p style="margin-top: 1rem; text-align: center;">
+      Or connect via <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </p>
   </section>
 

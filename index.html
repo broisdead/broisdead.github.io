@@ -72,7 +72,7 @@
 
     p.tagline {
       font-size: 18px;
-      color: #6b7280;
+      color: var(--dark); /* Changed: Using --dark for a slightly richer color */
       max-width: 600px;
       margin: 0 auto;
       user-select: none;
@@ -82,13 +82,13 @@
       padding: 4rem 2rem;
       max-width: 900px;
       margin: 0 auto 5rem auto;
-      background: #fafafa;
+      background: var(--accent); /* Changed: Using --accent for section background */
       border-radius: 0.75rem;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
     }
 
     h2 {
-      color: #111827;
+      color: var(--dark); /* Changed: Using --dark for h2 titles */
       margin-bottom: 1rem;
       font-weight: 600;
       font-size: 1.75rem;
@@ -110,7 +110,7 @@
       border-radius: 0.75rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       font-weight: 500;
-      color: #374151;
+      color: var(--dark); /* Changed: Using --dark for service list text */
       user-select: none;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       will-change: transform;
@@ -225,8 +225,8 @@
       text-align: center;
       padding: 2rem 1rem;
       font-size: 14px;
-      background: #f3f4f6;
-      color: #9ca3af;
+      background: var(--dark); /* Changed: Using --dark for footer background */
+      color: var(--accent); /* Changed: Using --accent for footer text */
       user-select: none;
     }
 

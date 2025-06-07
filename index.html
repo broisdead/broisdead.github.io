@@ -313,13 +313,48 @@
     <p>&copy; 2025 Synqly. Built with clarity and purpose.</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
+<!-- AOS Animation Script -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+
+<!-- Form Submission Script -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    identity: document.getElementById("identity").value
+  };
+
+  fetch("https://broisdead-github-io.onrender.com/submit-form", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) throw new Error("Network response was not ok");
+    return response.json();
+  })
+  .then(data => {
+    alert("Form submitted successfully!");
+  })
+  .catch(error => {
+    alert("There was an error submitting the form.");
+    console.error("Error:", error);
+  });
+});
+</script>
+
 </body>
 
 </html>

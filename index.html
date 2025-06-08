@@ -5,67 +5,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Synqly</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     :root {
       --primary: #5c8fa7;
       --accent: #d2e1e9;
       --dark: #2b4c5a;
-      --light: #ffffff;
+      --light: #f9f9f9;
       --font: 'Inter', sans-serif;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
+      margin: 0;
       font-family: var(--font);
-      background: linear-gradient(to right, #f9f9f9, #e9f3f8);
-      color: #374151;
+      background: #ffffff;
+      color: #6b7280;
       overflow-x: hidden;
       line-height: 1.6;
     }
 
     header.hero {
-      background: var(--light);
+      background: #ffffff;
+      color: #111827;
       text-align: center;
       padding: 6rem 2rem 5rem;
+      position: relative;
+      overflow: visible;
       display: flex;
       flex-direction: column;
       align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
       gap: 1.25rem;
     }
 
     .logo {
-      width: 180px;
-      height: 180px;
+      width: 280px;
+      height: 280px;
       object-fit: contain;
+      margin: 0 auto;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      box-shadow: 0px 12px 30px rgba(92, 143, 167, 0.3);
       border-radius: 50%;
       background: white;
       padding: 1.5rem;
-      box-shadow: 0 10px 40px rgba(92, 143, 167, 0.4);
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      user-select: none;
+      will-change: transform;
     }
 
     h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--dark);
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0;
+      max-width: 800px;
+      color: #111827;
+      line-height: 1.2;
+      user-select: none;
     }
 
     p.tagline {
-      font-size: 1.2rem;
+      font-size: 18px;
+      color: var(--dark);
       max-width: 600px;
-      color: #6b7280;
+      margin: 0 auto;
+      user-select: none;
     }
 
     section {
@@ -94,12 +104,15 @@
 
     .services li {
       background: #fff;
+      margin: 0;
       padding: 1.5rem 2rem;
       border-radius: 0.75rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       font-weight: 500;
       color: var(--dark);
+      user-select: none;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
+      will-change: transform;
     }
 
     .services li:hover {
@@ -108,68 +121,120 @@
     }
 
     .contact form {
-      width: 100%;
-      max-width: 500px;
-      padding: 3rem;
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      background: #ffffff;
+      border-radius: 0.75rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      animation: fadeIn 1s ease-in-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    label {
+    .contact label {
       font-weight: 600;
-      color: var(--dark);
+      font-size: 1rem;
+      color: #2b4c5a;
+      margin-bottom: 0.25rem;
+      display: block;
     }
 
-    input, select {
+    .contact input,
+    .contact select {
+      width: 100%;
       padding: 0.75rem 1rem;
+      background: #f9fafb;
       border: 1.5px solid #d1d5db;
       border-radius: 0.5rem;
-      background: #f9fafb;
       font-size: 1rem;
-      transition: all 0.3s ease;
+      color: #374151;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
     }
 
-    input:focus, select:focus {
-      border-color: var(--primary);
+    .contact input::placeholder {
+      color: #9ca3af;
+    }
+
+    .contact input:focus,
+    .contact select:focus {
       outline: none;
+      border-color: var(--primary);
       background: #fff;
-      box-shadow: 0 0 8px rgba(92, 143, 167, 0.3);
+      box-shadow: 0 0 8px var(--primary);
     }
 
-    button {
+    .contact button {
       align-self: center;
+      margin-top: 1rem;
+      background-color: var(--primary);
+      border: none;
       padding: 1rem 3rem;
       font-weight: 700;
       font-size: 1.1rem;
       color: white;
-      background: linear-gradient(to right, #5c8fa7, #4a7392);
-      border: none;
-      border-radius: 2rem;
+      border-radius: 9999px;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(92, 143, 167, 0.5);
-      transition: transform 0.2s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 15px rgba(92, 143, 167, 0.6);
+      width: fit-content;
     }
 
-    button:active {
-      transform: scale(0.98);
+    .contact button:hover,
+    .contact button:focus {
+      background-color: #4a7392;
+      box-shadow: 0 8px 20px rgba(72, 111, 147, 0.8);
+      outline: none;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: 600;
+      color: #2b4c5a;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .contact-info p {
+      margin: 0.4rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .contact form {
+        max-width: 90%;
+        padding: 2rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .logo {
+        width: 200px;
+        height: 200px;
+        padding: 1rem;
+      }
     }
 
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 14px;
-      background: #f3f4f6;
-      color: #9ca3af;
+      background: var(--dark);
+      color: var(--accent);
+      user-select: none;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    a:hover {
+      color: #2c5282;
     }
   </style>
 </head>
@@ -178,7 +243,7 @@
   <header class="hero">
     <img src="logo.png" alt="Synqly Logo" class="logo" />
     <h1 data-aos="fade-down">Welcome to Synqly</h1>
-    <p class="tagline" data-aos="fade-up">Connecting ideas with trust and collaboration</p>
+    <p class="tagline" data-aos="fade-up" data-aos-delay="200">Connecting ideas with trust and collaboration</p>
   </header>
 
   <section class="about" data-aos="fade-right">
@@ -207,42 +272,58 @@
     </ul>
   </section>
 
-  <section class="contact" data-aos="zoom-in">
+  <section class="contact" data-aos="zoom-in" aria-labelledby="contact-us-title">
+    <h2 id="contact-us-title">Contact Us</h2>
     <form id="contactForm">
-      <label for="name">Full Name</label>
-      <input id="name" name="name" type="text" placeholder="Your Full Name" required />
+      <div>
+        <label for="name">Full Name</label>
+        <input id="name" type="text" name="name" placeholder="Your Full Name" required />
+      </div>
+      <div>
+        <label for="email">Email Address</label>
+        <input id="email" type="email" name="email" placeholder="Your Email Address" required />
+      </div>
+      <div>
+        <label for="phone">Phone Number</label>
+        <input id="phone" type="tel" name="phone" placeholder="Your Phone Number" required pattern="[\d\s\-\+\(\)]{7,}" title="Please enter a valid phone number" />
+      </div>
+      <div>
+        <label for="identity">Contacting as</label>
+        <select id="identity" name="identity" required>
+          <option value="" disabled selected>Are you contacting as a...</option>
+          <option value="company">Company / Brand</option>
+          <option value="influencer">Influencer / Individual</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
 
-      <label for="email">Email Address</label>
-      <input id="email" name="email" type="email" placeholder="Your Email Address" required />
-
-      <label for="phone">Phone Number</label>
-      <input id="phone" name="phone" type="tel" placeholder="Your Phone Number" required />
-
-      <label for="identity">Contacting as</label>
-      <select id="identity" name="identity" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="company">Company / Brand</option>
-        <option value="influencer">Influencer / Individual</option>
-        <option value="other">Other</option>
-      </select>
-
-      <button type="submit">Send Message</button>
+      <button type="submit" aria-label="Send your message to Synqly">Send Message</button>
     </form>
+
+    <div class="contact-info" aria-label="Company contact information">
+      <p>Email: <a href="mailto:contact@synqly.com">contact@synqly.com</a></p>
+      <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    </div>
   </section>
 
   <footer data-aos="fade-up">
     <p>&copy; 2025 Synqly. Built with clarity and purpose.</p>
   </footer>
 
+  <!-- AOS Animation Script -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
 
+  <!-- Form Submission Script -->
+  <script>
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      const button = this.querySelector("button");
-      button.disabled = true;
-      button.textContent = "Sending...";
+      console.log("Form submitted"); // Debugging log
 
       const data = {
         name: document.getElementById("name").value,
@@ -251,29 +332,29 @@
         identity: document.getElementById("identity").value
       };
 
+      console.log("Submitting form with data:", data); // Debugging log
+
       fetch("https://synqly-backend.onrender.com/submit-form", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(data)
       })
       .then(response => {
-        if (!response.ok) throw new Error("Submission failed");
+        if (!response.ok) throw new Error("Network response was not ok");
         return response.json();
       })
       .then(data => {
-        alert("Message sent successfully!");
-        button.textContent = "Send Message";
-        button.disabled = false;
-        document.getElementById("contactForm").reset();
+        alert("Form submitted successfully!");
       })
       .catch(error => {
-        alert("There was an error. Please try again.");
-        button.textContent = "Send Message";
-        button.disabled = false;
-        console.error(error);
+        alert("There was an error submitting the form.");
+        console.error("Error:", error);
       });
     });
   </script>
+
 </body>
 
 </html>

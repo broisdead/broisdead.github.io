@@ -68,10 +68,43 @@
       color: #6b7280;
     }
 
-    section.contact {
+    section {
       padding: 4rem 2rem;
-      display: flex;
-      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto 5rem auto;
+      background: var(--accent);
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.75rem;
+    }
+
+    .services ul {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .services li {
+      background: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      font-weight: 500;
+      color: var(--dark);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .services li:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      transform: translateY(-6px) scale(1.03);
     }
 
     .contact form {
@@ -147,6 +180,32 @@
     <h1 data-aos="fade-down">Welcome to Synqly</h1>
     <p class="tagline" data-aos="fade-up">Connecting ideas with trust and collaboration</p>
   </header>
+
+  <section class="about" data-aos="fade-right">
+    <h2>About Us</h2>
+    <p>
+      At Synqly, we believe that strong connections empower stronger outcomes. We're here to align innovators,
+      creators, and organizations to accelerate progress through seamless collaboration.
+    </p>
+  </section>
+
+  <section class="services" data-aos="fade-left">
+    <h2>Our Services</h2>
+    <ul>
+      <li>
+        <strong>Brand Promotion:</strong> Through detailed market research, we ensure that companies are matched with influencers that align perfectly with their needs and goals.
+      </li>
+      <li>
+        <strong>Market Research:</strong> Our service eliminates the hassle of finding work for influencers by directly connecting them with companies looking for promotion.
+      </li>
+      <li>
+        <strong>Influencer & Social Media Marketing:</strong> We provide influencers and social media marketers with projects to get hired and get paid.
+      </li>
+      <li>
+        <strong>Team Formation:</strong> We bring like-minded influencers, shooters, and editors together to form their own creative teams.
+      </li>
+    </ul>
+  </section>
 
   <section class="contact" data-aos="zoom-in">
     <form id="contactForm">

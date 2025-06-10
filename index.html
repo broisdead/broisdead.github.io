@@ -321,40 +321,57 @@
 
   <!-- Form Submission Script -->
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      console.log("Form submitted"); // Debugging log
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    console.log("Form submitted"); // Debugging log
 
-      const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        identity: document.getElementById("identity").value
-      };
+    const data = {
+      // ✅ CORRECTED: Keys now match backend expectations
+      'Full Name': document.getElementById("name").value,
+      'Email Address': document.getElementById("email").value,
+      'Phone Number': document.getElementById("phone").value,
+      'Identity': document.getElementById("identity").value // Optional: If you want 'identity' in Google Sheets
+    };
 
-      console.log("Submitting form with data:", data); // Debugging log
+    console.log("Submitting form with data:", data); // Debugging log
 
-      fetch("https://synqly-backend.onrender.com/submit-form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => {
-        if (!response.ok) throw new Error("Network response was not ok");
-        return response.json();
-      })
-      .then(data => {
-        alert("Form submitted successfully!");
-      })
-      .catch(error => {
-        alert("There was an error submitting the form.");
-        console.error("Error:", error);
-      });
+    // Make sure your backend URL is correct!
+    // Example: https://your-render-app-name.onrender.com/submit
+    fetch("https://synqly-backend.onrender.com/submit", { // Ensure this URL is exact
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      // Check for HTTP errors (e.g., 4xx, 5xx)
+      if (!response.ok) {
+        // Read the error message from the backend if available
+        return response.json().then(errorData => {
+          throw new Error(errorData.message || "Network response was not ok");
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Check the 'status' field from your backend's JSON response
+      if (data.status === 'success') {
+          alert("Form submitted successfully!");
+          // Optional: Clear the form after successful submission
+          document.getElementById("contactForm").reset();
+      } else {
+          // Display the error message from the backend
+          alert("Error: " + data.message);
+      }
+    })
+    .catch(error => {
+      alert("There was an error submitting the form: " + error.message);
+      console.error("Fetch Error:", error);
     });
-  </script>
-
+  });
+</script>
+  
 </body>
 
 </html>

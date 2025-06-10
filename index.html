@@ -10,13 +10,26 @@
   <style>
     :root {
       --primary: #5c8fa7;
+      /* Original primary blue */
       --primary-dark: #4a7392;
+      /* Darker primary blue */
       --accent: #d2e1e9;
+      /* Light blue accent */
       --dark: #2b4c5a;
+      /* Dark blue for text */
       --light: #f9f9f9;
+      /* Light background */
       --font: 'Inter', sans-serif;
 
       --blue-shape-color: #5c8fa7;
+      /* For the morphing shape */
+
+      /* New vibrant colors */
+      --vibrant-green: #4CAF50;
+      --vibrant-purple: #9C27B0;
+      --vibrant-orange: #FF9800;
+      --vibrant-red: #F44336;
+      --vibrant-cyan: #00BCD4;
     }
 
     * {
@@ -126,16 +139,17 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 300px;
-      height: 300px;
+      width: 350px; /* Slightly larger */
+      height: 350px; /* Slightly larger */
       background-color: var(--blue-shape-color);
-      filter: drop-shadow(0 20px 30px rgba(92, 143, 167, 0.45));
+      filter: drop-shadow(0 25px 40px rgba(92, 143, 167, 0.55)); /* More pronounced shadow */
       clip-path: polygon(
         48% 10%, 75% 18%, 89% 42%, 79% 70%, 63% 87%, 44% 93%, 22% 84%, 12% 57%, 22% 30%, 38% 12%
       );
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) rotate(0deg); /* Add rotation */
       animation: morphExtremeRandom 10s ease-in-out infinite alternate,
-                 floatShape 7s ease-in-out infinite alternate;
+                 floatShape 7s ease-in-out infinite alternate,
+                 rotateShape 15s linear infinite; /* New rotation animation */
       z-index: 0;
       user-select: none;
       pointer-events: none;
@@ -176,11 +190,16 @@
 
     @keyframes floatShape {
       0%, 100% {
-        transform: translate(-50%, -50%) translateY(0);
+        transform: translate(-50%, -50%) translateY(0) rotate(var(--rotation-start, 0deg));
       }
       50% {
-        transform: translate(-50%, -50%) translateY(-20px);
+        transform: translate(-50%, -50%) translateY(-25px) rotate(var(--rotation-end, 10deg)); /* More vertical movement */
       }
+    }
+
+    @keyframes rotateShape {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     /* Subtle creative text in background behind shape and logo */
@@ -203,28 +222,25 @@
       max-width: 90vw;
       overflow: hidden;
       text-transform: uppercase;
+      animation: textPulse 8s ease-in-out infinite; /* Apply pulse to the whole container */
     }
 
     /* Animate the opacity on the background text to gently pulse */
     @keyframes textPulse {
       0%, 100% {
         opacity: 0.05;
+        transform: translate(-50%, -50%) scale(1);
       }
       50% {
         opacity: 0.12;
+        transform: translate(-50%, -50%) scale(1.02); /* Subtle scale effect */
       }
     }
 
     .hero-bg-text span {
-      animation: textPulse 8s ease-in-out infinite;
       padding: 0 0.7rem;
       user-select: none;
     }
-
-    .hero-bg-text span:nth-child(1) { animation-delay: 0s; }
-    .hero-bg-text span:nth-child(2) { animation-delay: 2s; }
-    .hero-bg-text span:nth-child(3) { animation-delay: 4s; }
-    .hero-bg-text span:nth-child(4) { animation-delay: 6s; }
 
     .logo {
       width: 280px;
@@ -241,12 +257,12 @@
       animation: logoFloatRotate 12s ease-in-out infinite;
       cursor: default;
       z-index: 1;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     .logo:hover {
       box-shadow: 0 28px 80px rgba(92, 143, 167, 0.75);
-      transform: scale(1.08);
+      transform: scale(1.08) rotate(5deg); /* Added rotation on hover */
     }
 
     @keyframes logoFloatRotate {
@@ -343,39 +359,108 @@
       background: var(--accent);
       border-radius: 0.75rem;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+      overflow: hidden; /* Ensure content stays within bounds */
     }
 
     h2 {
       color: var(--dark);
       margin-bottom: 1rem;
       font-weight: 600;
-      font-size: 1.75rem;
+      font-size: 2.25rem; /* Larger heading */
+      text-align: center; /* Center headings */
+      position: relative;
+      padding-bottom: 0.5rem;
     }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
 
     .services ul {
       list-style: none;
       padding-left: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for more columns on larger screens */
       gap: 2rem;
+      margin-top: 3rem;
     }
 
     .services li {
       background: #fff;
       margin: 0;
-      padding: 1.5rem 2rem;
+      padding: 2rem; /* Increased padding */
       border-radius: 0.75rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
       font-weight: 500;
       color: var(--dark);
       user-select: none;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
       will-change: transform;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .services li:hover {
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.15); /* More pronounced hover shadow */
+      transform: translateY(-8px) scale(1.04); /* More dynamic scale and lift */
+      background-color: var(--accent); /* Subtle background change on hover */
+    }
+
+    .services li strong {
+      font-size: 1.25rem; /* Larger service title */
+      color: var(--primary-dark);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .services li p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .services li a.service-link {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    .services li a.service-link:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Individual service color accents */
+    .services li:nth-child(1) { /* Brand Promotion */
+      border-top: 5px solid var(--vibrant-green);
+    }
+    .services li:nth-child(2) { /* Market Research */
+      border-top: 5px solid var(--vibrant-purple);
+    }
+    .services li:nth-child(3) { /* Influencer & Social Media Marketing */
+      border-top: 5px solid var(--vibrant-orange);
+    }
+    .services li:nth-child(4) { /* Team Formation */
+      border-top: 5px solid var(--vibrant-red);
     }
 
     .contact form {
@@ -520,8 +605,8 @@
       <span>Synqly</span>
     </div>
     <div class="nav-menu">
-      <a href="#about" tabindex="0">About</a>
       <a href="#services" tabindex="0">Services</a>
+      <a href="#about" tabindex="0">About</a>
       <a href="#contact-us-title" tabindex="0">Contact</a>
     </div>
   </nav>
@@ -529,15 +614,15 @@
   <header class="hero">
     <div class="morph-shape" aria-hidden="true"></div>
     <div class="hero-bg-text" aria-hidden="true" aria-label="Background creative text">
-      <span>Cinematography</span>
-      <span>Content Creators</span>
-      <span>Video Editors</span>
-      <span>Business Analyst</span>
+      <span>Synergy</span>
+      <span>Connection</span>
+      <span>Innovation</span>
+      <span>Growth</span>
     </div>
     <img src="logo.png" alt="Synqly Logo" class="logo" />
-    <h1 data-aos="fade-down">Welcome to Synqly</h1>
-    <p class="tagline" data-aos="fade-up" data-aos-delay="200">Connecting ideas with trust and collaboration</p>
-    <a href="#contact-us-title" class="hero-cta" aria-label="Get started with Synqly">
+    <h1 data-aos="fade-down" data-aos-duration="1200">Welcome to Synqly</h1>
+    <p class="tagline" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">Connecting ideas with trust and collaboration</p>
+    <a href="#contact-us-title" class="hero-cta" aria-label="Get started with Synqly" data-aos="zoom-in" data-aos-delay="600">
       Get Started
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
         aria-hidden="true">
@@ -546,30 +631,41 @@
     </a>
   </header>
 
-  <section class="about" id="about" data-aos="fade-right">
+  <section class="services" id="services" data-aos="fade-up" data-aos-easing="ease-out-cubic">
+    <h2>Our Services</h2>
+    <ul>
+      <li data-aos="fade-up" data-aos-delay="100">
+        <strong>Brand Promotion</strong>
+        <p>Expert strategies to enhance your brand's visibility and market presence through targeted campaigns.</p>
+        <a href="brand-promotion.html" class="service-link">Learn More</a>
+      </li>
+      <li data-aos="fade-up" data-aos-delay="200">
+        <strong>Market Research</strong>
+        <p>In-depth analysis to identify key opportunities and consumer insights, ensuring perfect alignment.</p>
+        <a href="market-research.html" class="service-link">Learn More</a>
+      </li>
+      <li data-aos="fade-up" data-aos-delay="300">
+        <strong>Influencer & Social Media Marketing</strong>
+        <p>Connecting businesses with top-tier influencers and crafting compelling social media campaigns.</p>
+        <a href="influencer-marketing.html" class="service-link">Learn More</a>
+      </li>
+      <li data-aos="fade-up" data-aos-delay="400">
+        <strong>Team Formation</strong>
+        <p>Facilitating the creation of cohesive and productive creative teams for various projects.</p>
+        <a href="team-formation.html" class="service-link">Learn More</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="about" id="about" data-aos="fade-right" data-aos-easing="ease-out-quart">
     <h2>About Us</h2>
     <p>
       At Synqly, we believe that strong connections empower stronger outcomes. We're here to align innovators,
-      creators, and organizations to accelerate progress through seamless collaboration.
+      creators, and organizations to accelerate progress through seamless collaboration. Our mission is to bridge the
+      gap between talent and opportunity, fostering an environment where ideas flourish and partnerships thrive. We are
+      committed to delivering exceptional value and fostering long-term relationships built on trust and mutual
+      success.
     </p>
-  </section>
-
-  <section class="services" id="services" data-aos="fade-left">
-    <h2>Our Services</h2>
-    <ul>
-      <li>
-        <strong>Brand Promotion:</strong> Through detailed market research, we ensure that companies are matched with influencers that align perfectly with their needs and goals.
-      </li>
-      <li>
-        <strong>Market Research:</strong> Our service eliminates the hassle of finding work for influencers by directly connecting them with companies looking for promotion.
-      </li>
-      <li>
-        <strong>Influencer & Social Media Marketing:</strong> We provide influencers and social media marketers with projects to get hired and get paid.
-      </li>
-      <li>
-        <strong>Team Formation:</strong> We bring like-minded influencers, shooters, and editors together to form their own creative teams.
-      </li>
-    </ul>
   </section>
 
   <section class="contact" data-aos="zoom-in" aria-labelledby="contact-us-title">
@@ -610,7 +706,6 @@
     <p>&copy; 2025 Synqly. Built with clarity and purpose.</p>
   </footer>
 
-  <!-- AOS Animation Script -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
@@ -619,7 +714,6 @@
     });
   </script>
 
-  <!-- Form Submission Script -->
   <script>
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();

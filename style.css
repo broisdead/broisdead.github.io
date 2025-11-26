@@ -1,5 +1,4 @@
-
-/* ---------- Design tokens / fallbacks (tweak to match your theme) ---------- */
+/* ====== Global / base styles ====== */
 :root{
   --bg: #ffffff;
   --muted-bg: #fbfbfd;
@@ -8,207 +7,159 @@
   --primary: #0b6fa8;
   --primary-dark: #044a6d;
   --dark: #0e1720;
-  --glass: rgba(255,255,255,0.65);
   --radius-lg: 14px;
   --radius-md: 10px;
   --ease: cubic-bezier(.2,.9,.25,1);
   --shadow-1: 0 8px 28px rgba(3,10,20,0.06);
   --shadow-2: 0 16px 40px rgba(3,10,20,0.08);
-  --max-content-height: 1400px; /* safe large value for CSS max-height animation fallback */
+  --max-content-height: 1400px;
+  --page-max: 1100px;
 }
 
-/* ---------- Base page/section resets (do not clash with your existing rules) ---------- */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(180deg,#f6f8fb 0%, #ffffff 100%);
+  padding: 32px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+/* Layout */
+.container{
+  width:100%;
+  max-width:var(--page-max);
+}
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:28px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:0.8rem;
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  border-radius:10px;
+  background: linear-gradient(135deg,var(--primary),#2fa0d0);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:800;
+  font-size:1.1rem;
+}
+
+/* ====== COLLAPSIBLE / DROPBOX SECTIONS ====== */
 .collapsible {
   position: relative;
   background: linear-gradient(180deg,var(--muted-bg),var(--bg));
   border-radius: var(--radius-lg);
-  padding: 0;
-  margin: 1rem 0;
-  box-sizing: border-box;
+  margin: 18px 0;
   overflow: visible;
 }
 
-/* Toggle (header) - clickable and focusable */
-.collapsible .collapsible-toggle{
+.collapsible-toggle{
   display:flex;
-  align-items:center;
   justify-content:space-between;
   width:100%;
-  gap:1rem;
-  border: none;
-  background: transparent;
-  padding: 1.1rem 1.25rem;
-  cursor: pointer;
-  text-align: left;
-  border-radius: var(--radius-lg);
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding:1.1rem 1.25rem;
+  border-radius:var(--radius-lg);
   transition: transform 240ms var(--ease), box-shadow 240ms var(--ease);
-  -webkit-tap-highlight-color: transparent;
 }
-.collapsible .collapsible-toggle h2{
+.collapsible-toggle h2{
   margin:0;
   font-size:1.18rem;
   font-weight:800;
-  color:var(--dark);
-  letter-spacing: -0.2px;
 }
-.collapsible .collapsible-toggle .chev{
-  font-size:1.15rem;
+.chev{
+  font-size:1.2rem;
   color:var(--primary);
-  transition: transform 320ms var(--ease);
+  transition:transform 320ms var(--ease);
 }
 
-/* Hover / focus lift for the toggle area */
-.collapsible:hover .collapsible-toggle,
-.collapsible:focus-within .collapsible-toggle{
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-1);
+.collapsible:hover .collapsible-toggle{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-1);
 }
 
-/* ---------- Collapsible content (hidden by default) ---------- */
-/* We'll control visibility using: - collapsed default - opened on :hover or .expanded or :focus-within */
-.collapsible .collapsible-content{
-  box-sizing: border-box;
-  overflow: hidden;
-  max-height: 0;             /* collapsed */
-  padding: 0 1.25rem;        /* collapsed padding (only horizontal) */
-  opacity: 0;
-  transform: translateY(6px);
+/* Collapsible content */
+.collapsible-content{
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  padding:0 1.25rem;
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
+  background:white;
+  transform:translateY(6px);
   transition:
     max-height 520ms var(--ease),
     padding 420ms var(--ease),
     opacity 380ms var(--ease),
     transform 420ms var(--ease);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,252,0.98));
-  box-shadow: none;
 }
 
-/* When expanded: either CSS class .expanded set by JS or :hover / :focus-within will open */
 .collapsible.expanded .collapsible-content,
 .collapsible:hover .collapsible-content,
-.collapsible:focus-within .collapsible-content,
-.collapsible .collapsible-content[aria-hidden="false"]{
-  max-height: var(--max-content-height);
-  padding: 1.25rem;
-  opacity: 1;
-  transform: translateY(0);
-  box-shadow: var(--shadow-2);
+.collapsible:focus-within .collapsible-content{
+  max-height:var(--max-content-height);
+  padding:1.25rem;
+  opacity:1;
+  transform:translateY(0);
+  box-shadow:var(--shadow-2);
 }
 
-/* rotate arrow when expanded (works with :hover, :focus-within or .expanded) */
-.collapsible:hover .chev,
 .collapsible.expanded .chev,
-.collapsible:focus-within .chev,
-.collapsible .collapsible-toggle[aria-expanded="true"] .chev {
-  transform: rotate(180deg) translateY(-1px);
+.collapsible:hover .chev{
+  transform:rotate(180deg);
 }
 
-/* ---------- Inner content layout / spacing ---------- */
-.collapsible .section-intro{
-  margin: 0 0 1rem 0;
+/* WHY GRID */
+.section-intro{
   font-weight:600;
-  line-height:1.55;
-  color:var(--dark);
+  margin-bottom:1rem;
 }
 
-/* Grid of items (Why Choose Us) */
 .why-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.25rem;
-  align-items:start;
-  margin-top: 0.5rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1.25rem;
 }
 
-/* item card style */
 .why-item{
-  background: var(--soft-card);
-  padding: 1.25rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow-1);
-  transform: translateY(10px);
-  opacity: 0;
-  transition: box-shadow 240ms var(--ease);
-  will-change: transform, opacity;
-  /* animation fallback: these will run only when content becomes visible */
-  animation-name: fadeUp;
-  animation-duration: 420ms;
-  animation-fill-mode: both;
-  animation-timing-function: var(--ease);
-  animation-delay: 0ms; /* will be replaced by nth-child below */
+  background:var(--soft-card);
+  padding:1.25rem;
+  border-radius:12px;
+  opacity:0;
+  transform:translateY(10px);
+  box-shadow:var(--shadow-1);
+  animation:fadeUp 420ms var(--ease) forwards;
 }
 
-/* subtle hover lift per card */
-.why-item:hover{ box-shadow: 0 20px 50px rgba(3,10,20,0.08); transform: translateY(-6px); }
+.why-item:nth-child(1){ animation-delay:60ms; }
+.why-item:nth-child(2){ animation-delay:140ms; }
+.why-item:nth-child(3){ animation-delay:220ms; }
+.why-item:nth-child(4){ animation-delay:300ms; }
 
-/* Stagger children using nth-child to set a custom property for delay */
-.why-item:nth-child(1){ animation-delay: 60ms; }
-.why-item:nth-child(2){ animation-delay: 140ms; }
-.why-item:nth-child(3){ animation-delay: 220ms; }
-.why-item:nth-child(4){ animation-delay: 300ms; }
-.why-item:nth-child(5){ animation-delay: 380ms; } /* safe if more items */
-
-/* But don't show items when content is collapsed — key approach:
-   items will be invisible (opacity 0) until the parent content is in 'open' state.
-   Use a selector that only applies animation when parent content is visible */
-.collapsible .collapsible-content:not([aria-hidden="true"]) .why-item,
-.collapsible.expanded .why-item,
-.collapsible:hover .why-item,
-.collapsible:focus-within .why-item {
-  animation-play-state: running;
-  opacity: 1;
-  transform: translateY(0);
+/* Only animate when expanded */
+.collapsible-content[aria-hidden="false"] .why-item{
+  opacity:1 !important;
+  transform:translateY(0) !important;
 }
 
-/* For plain paragraphs in About */
-.about .collapsible-content p{
-  margin: 0;
-  padding: 0;
-  line-height: 1.75;
-  font-size: 1rem;
-  color: var(--dark);
+/* FADE ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
 }
-
-/* ---------- Keyframes for fade/slide ---------- */
-@keyframes fadeUp {
-  0%{
-    opacity: 0;
-    transform: translateY(10px) scale(.995);
-  }
-  60%{
-    opacity: .6;
-    transform: translateY(3px) scale(0.998);
-  }
-  100%{
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* ---------- Accessibility: prefers-reduced-motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .collapsible .collapsible-content,
-  .why-item,
-  .collapsible .collapsible-toggle { 
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
-  }
-}
-
-/* ---------- Responsive tweaks ---------- */
-@media (max-width: 900px){
-  .collapsible .collapsible-toggle { padding: 1rem; }
-  .collapsible .collapsible-content { padding: 1rem; }
-  .why-grid { gap: 0.9rem; }
-  .why-item { padding: 1rem; }
-}
-
-@media (max-width:480px){
-  .collapsible .collapsible-toggle h2 { font-size: 1.02rem; }
-  .why-grid { grid-template-columns: 1fr; }
-}
-
-/* ---------- Small utility: force expanded state if you need to debug ---------- */
-/* .collapsible.debug-expanded { outline: 2px dashed crimson; } .collapsible.debug-expanded .collapsible-content{ max-height: var(--max-content-height) !important; opacity:1 !important; } */
-

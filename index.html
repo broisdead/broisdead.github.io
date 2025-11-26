@@ -1,238 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Synqly — connecting ideas with trust and collaboration. Brand promotion, market research, influencer & social media marketing, and team formation." />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Synqly</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="main-nav" aria-label="Primary navigation">
-    <div class="nav-logo" aria-label="Synqly logo">
-      <img src="logo.png" alt="Synqly Logo" class="nav-logo-img" width="40" height="40" />
-      <span>Synqly</span>
-    </div>
-    <div class="nav-menu">
-      <a href="#services" tabindex="0">Services</a>
-      <a href="#about" tabindex="0">About</a>
-      <a href="#contact-us-title" tabindex="0">Contact</a>
-    </div>
-  </nav>
+  <div class="container">
 
-  <header class="hero">
-    <div class="hero-bg-text" aria-hidden="true" aria-label="Background creative text">
-      <span>Synergy</span>
-      <span>Connection</span>
-      <span>Innovation</span>
-      <span>Growth</span>
-    </div>
-    <img src="logo.png" alt="Synqly Logo" class="logo" />
-    <h1 data-aos="fade-down" data-aos-duration="1200">Welcome</h1>
-    <p class="tagline" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">Connecting ideas with trust and
-      collaboration</p>
-    <a href="#contact-us-title" class="hero-cta" aria-label="Get started with Synqly" data-aos="zoom-in"
-      data-aos-delay="600">
-      Get Started
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-        aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </a>
-  </header>
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <h1>Synqly</h1>
+          <p style="margin:0;color:#556">Modern, interactive sections</p>
+        </div>
+      </div>
+    </header>
 
-  <section class="services" id="services" data-aos="fade-up" data-aos-easing="ease-out-cubic">
-    <h2>Our Services</h2>
-    <ul>
-      <li data-aos="fade-up" data-aos-delay="100">
-        <strong>Brand Promotion</strong>
-        <p>Our comprehensive brand promotion services are designed to elevate your visibility and market presence. We
-          craft bespoke campaigns that resonate with your target audience, utilizing a blend of digital advertising,
-          content marketing, and strategic public relations to ensure your brand stands out in a competitive landscape.
-          From initial strategy to execution and analysis, we're with you every step of the way.</p>
-        <a href="brand-promotion.html" class="service-link">Learn More</a>
-      </li>
-      <li data-aos="fade-up" data-aos-delay="200">
-        <strong>Market Research</strong>
-        <p>Unlock the power of informed decision-making with our in-depth market research and analysis. We delve deep
-          into market trends, consumer behavior, and competitive landscapes to uncover crucial insights. Our research
-          helps you identify untapped opportunities, validate product concepts, and refine your marketing strategies,
-          ensuring perfect alignment with market demands and consumer preferences.</p>
-        <a href="market-research.html" class="service-link">Learn More</a>
-      </li>
-      <li data-aos="fade-up" data-aos-delay="300">
-        <strong>Influencer & Social Media Marketing</strong>
-        <p>Harness the reach and authenticity of influencer marketing combined with cutting-edge social media
-          strategies. We connect your business with top-tier influencers whose audiences align with your brand values,
-          creating genuine and impactful campaigns. Our social media experts craft compelling content and engagement
-          strategies to build vibrant online communities and drive meaningful conversions.</p>
-        <a href="influencer-marketing.html" class="service-link">Learn More</a>
-      </li>
-    </ul>
-  </section>
-<!-- WHY CHOOSE US (replace your existing <section class="why-us" ...>) -->
-<section class="why-us collapsible" id="why-us" data-aos="fade-up" data-aos-easing="ease-out-cubic" aria-labelledby="why-us-title" role="region">
-  <button class="collapsible-toggle" id="why-us-title" aria-expanded="false" aria-controls="why-us-content">
-    <h2>Why Choose Us</h2>
-    <span class="chev" aria-hidden="true">▾</span>
-  </button>
+    <!-- WHY CHOOSE US -->
+    <section class="collapsible why-us" id="why-us">
+      <button class="collapsible-toggle" aria-expanded="false">
+        <h2>Why Choose Us</h2>
+        <span class="chev">▾</span>
+      </button>
 
-  <div id="why-us-content" class="collapsible-content" aria-hidden="true">
-    <p class="section-intro">
-      At Synqly, we don’t just manage your social media — we engineer it for growth.
-      In a fast-paced digital world full of noise, we help your brand stand out through content that is
-      strategically crafted, data-informed, and deeply aligned with your identity.
-    </p>
+      <div class="collapsible-content" aria-hidden="true">
+        <p class="section-intro">
+          At Synqly, we don’t just manage your social media — we engineer it for growth.
+        </p>
 
-    <div class="why-grid">
-      <article class="why-item"><h3>Engineered for Growth</h3><p>We design your social presence with growth in mind — not as a checklist of posts. Every piece of content serves a clear purpose: to attract, engage, and retain the right audience for your brand.</p></article>
+        <div class="why-grid">
 
-      <article class="why-item"><h3>Hybrid Approach</h3><p>What makes us different is our hybrid model: we combine premium content creation with a powerful influencer network, so your brand is amplified by voices that naturally align with your values and target audience.</p></article>
+          <div class="why-item">
+            <h3>Engineered for Growth</h3>
+            <p>Every piece of content serves a purpose — designed for momentum.</p>
+          </div>
 
-      <article class="why-item"><h3>Strategic, Premium Content</h3><p>Our content is intentionally planned, on-brand, and built around your positioning, messaging, and goals — so your brand feels consistent everywhere it shows up.</p></article>
+          <div class="why-item">
+            <h3>Hybrid Model</h3>
+            <p>Premium creation + influencer amplification for maximum reach.</p>
+          </div>
 
-      <article class="why-item"><h3>Organic & Measurable Impact</h3><p>We focus on building organic engagement, real connection, and measurable impact. The goal is sustainable growth — not vanity metrics — so you can clearly see how your presence is moving the needle for your business.</p></article>
-    </div>
+          <div class="why-item">
+            <h3>Strategic Content</h3>
+            <p>Consistent, intentional storytelling aligned with brand identity.</p>
+          </div>
+
+          <div class="why-item">
+            <h3>Organic Results</h3>
+            <p>We focus on sustainable engagement — not vanity metrics.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="collapsible about" id="about">
+      <button class="collapsible-toggle" aria-expanded="false">
+        <h2>About Us</h2>
+        <span class="chev">▾</span>
+      </button>
+
+      <div class="collapsible-content" aria-hidden="true">
+        <p>
+          Synqly helps brands build meaningful digital presence.
+          We blend strategy, creativity, and authenticity to create
+          content that feels human — yet engineered for growth.
+        </p>
+      </div>
+    </section>
+
   </div>
-</section>
 
-<!-- ABOUT (replace your existing <section class="about" ...>) -->
-<section class="about collapsible" id="about" data-aos="fade-right" data-aos-easing="ease-out-quart" aria-labelledby="about-title" role="region">
-  <button class="collapsible-toggle" id="about-title" aria-expanded="false" aria-controls="about-content">
-    <h2>About Us</h2>
-    <span class="chev" aria-hidden="true">▾</span>
-  </button>
-
-  <div id="about-content" class="collapsible-content" aria-hidden="true">
-    <p>
-      At Synqly, we believe that strong connections empower stronger outcomes. We're here to align innovators,
-      creators, and organizations to accelerate progress through seamless collaboration. Our mission is to bridge the
-      gap between talent and opportunity, fostering an environment where ideas flourish and partnerships thrive. We are
-      committed to delivering exceptional value and fostering long-term relationships built on trust and mutual
-      success.
-    </p>
-  </div>
-</section>
-  <section class="contact" data-aos="zoom-in" aria-labelledby="contact-us-title">
-    <h2 id="contact-us-title">Contact Us</h2>
-    <form id="contactForm" novalidate>
-      <div>
-        <label for="name">Full Name</label>
-        <input id="name" type="text" name="name" placeholder="Your Full Name" required />
-      </div>
-      <div>
-        <label for="email">Email Address</label>
-        <input id="email" type="email" name="email" placeholder="Your Email Address" required />
-      </div>
-      <div>
-        <label for="phone">Phone Number</label>
-        <input id="phone" type="tel" name="phone" placeholder="Your Phone Number" required
-          pattern="[\d\s\-\+\(\)]{7,}" title="Please enter a valid phone number" />
-      </div>
-      <div>
-        <label for="identity">Contacting as</label>
-        <select id="identity" name="identity" required>
-          <option value="" disabled selected>Are you contacting as a...</option>
-          <option value="company">Company / Brand</option>
-          <option value="influencer">Influencer / Individual</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <button id="contactSubmit" type="submit" aria-label="Send your message to Synqly">Send Message</button>
-
-      <!-- Accessible status region for form feedback -->
-      <div id="formStatus" class="form-status" role="status" aria-live="polite" aria-atomic="true" hidden></div>
-    </form>
-
-    <div class="contact-info" aria-label="Company contact information">
-      <p>Email: <a href="mailto:contact@synqly.com">contact@synqly.com</a></p>
-      <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-    </div>
-  </section>
-
-  <footer data-aos="fade-up">
-    <p>&copy; 2025 Synqly. Built with clarity and purpose.</p>
-  </footer>
-
-  <noscript>
-    <div class="no-js-warning">This site works best with JavaScript enabled. If you disable JavaScript some features (like the contact form) will not work.</div>
-  </noscript>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <!-- SCRIPT -->
   <script>
-    // Initialize AOS
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.AOS) {
-        AOS.init({
-          duration: 1000,
-          once: true
-        });
+    const sections = document.querySelectorAll(".collapsible");
+
+    sections.forEach(section => {
+      const toggle = section.querySelector(".collapsible-toggle");
+      const content = section.querySelector(".collapsible-content");
+
+      function setExpanded(expanded){
+        toggle.setAttribute("aria-expanded", expanded);
+        content.setAttribute("aria-hidden", !expanded);
+        section.classList.toggle("expanded", expanded);
       }
+
+      // Hover expand
+      section.addEventListener("mouseenter", () => setExpanded(true));
+      section.addEventListener("mouseleave", () => setExpanded(false));
+
+      // Click (mobile)
+      toggle.addEventListener("click", () => {
+        const isOpen = toggle.getAttribute("aria-expanded") === "true";
+        setExpanded(!isOpen);
+      });
     });
   </script>
 
-  <script>
-  (function () {
-    // Target collapsible sections
-    const collapsibles = document.querySelectorAll('.collapsible');
-
-    collapsibles.forEach(section => {
-      const toggle = section.querySelector('.collapsible-toggle');
-      const content = section.querySelector('.collapsible-content');
-
-      // Utility to set state
-      function setExpanded(expanded) {
-        section.classList.toggle('expanded', expanded);
-        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
-      }
-
-      // Mouse enter/leave open/close
-      let hoverTimeout;
-      section.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-        setExpanded(true);
-      });
-      section.addEventListener('mouseleave', () => {
-        // small delay so it feels less jumpy
-        hoverTimeout = setTimeout(() => setExpanded(false), 280);
-      });
-
-      // Toggle via click (for keyboard and touch)
-      toggle.addEventListener('click', (e) => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        setExpanded(!isExpanded);
-      });
-
-      // keyboard: open on focus, close on blur
-      toggle.addEventListener('focus', () => setExpanded(true));
-      toggle.addEventListener('blur', () => {
-        // keep it open if focus moved inside content
-        setTimeout(() => {
-          if (!section.contains(document.activeElement)) setExpanded(false);
-        }, 60);
-      });
-
-      // If user tabs into any focusable inside content, keep expanded
-      content.addEventListener('focusin', () => setExpanded(true));
-      content.addEventListener('focusout', () => {
-        setTimeout(() => {
-          if (!section.contains(document.activeElement)) setExpanded(false);
-        }, 60);
-      });
-
-      // Initial collapsed
-      setExpanded(false);
-    });
-  })();
-</script>
-
-
 </body>
-
 </html>

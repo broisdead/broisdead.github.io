@@ -74,52 +74,40 @@
       </li>
     </ul>
   </section>
-  <section class="why-us" id="why-us" data-aos="fade-up" data-aos-easing="ease-out-cubic">
-  <h2>Why Choose Us</h2>
+<!-- WHY CHOOSE US (replace your existing <section class="why-us" ...>) -->
+<section class="why-us collapsible" id="why-us" data-aos="fade-up" data-aos-easing="ease-out-cubic" aria-labelledby="why-us-title" role="region">
+  <button class="collapsible-toggle" id="why-us-title" aria-expanded="false" aria-controls="why-us-content">
+    <h2>Why Choose Us</h2>
+    <span class="chev" aria-hidden="true">▾</span>
+  </button>
 
-  <p class="section-intro">
-    At Synqly, we don’t just manage your social media — we engineer it for growth.
-    In a fast-paced digital world full of noise, we help your brand stand out through content that is
-    strategically crafted, data-informed, and deeply aligned with your identity.
-  </p>
+  <div id="why-us-content" class="collapsible-content" aria-hidden="true">
+    <p class="section-intro">
+      At Synqly, we don’t just manage your social media — we engineer it for growth.
+      In a fast-paced digital world full of noise, we help your brand stand out through content that is
+      strategically crafted, data-informed, and deeply aligned with your identity.
+    </p>
 
-  <div class="why-grid">
-    <article class="why-item">
-      <h3>Engineered for Growth</h3>
-      <p>
-        We design your social presence with growth in mind — not as a checklist of posts. Every piece of content
-        serves a clear purpose: to attract, engage, and retain the right audience for your brand.
-      </p>
-    </article>
+    <div class="why-grid">
+      <article class="why-item"><h3>Engineered for Growth</h3><p>We design your social presence with growth in mind — not as a checklist of posts. Every piece of content serves a clear purpose: to attract, engage, and retain the right audience for your brand.</p></article>
 
-    <article class="why-item">
-      <h3>Hybrid Approach</h3>
-      <p>
-        What makes us different is our hybrid model: we combine premium content creation with a powerful influencer
-        network, so your brand is amplified by voices that naturally align with your values and target audience.
-      </p>
-    </article>
+      <article class="why-item"><h3>Hybrid Approach</h3><p>What makes us different is our hybrid model: we combine premium content creation with a powerful influencer network, so your brand is amplified by voices that naturally align with your values and target audience.</p></article>
 
-    <article class="why-item">
-      <h3>Strategic, Premium Content</h3>
-      <p>
-        Our content is not random or trend-chasing. It is intentionally planned, on-brand, and built around your
-        positioning, messaging, and goals — so your brand feels consistent everywhere it shows up.
-      </p>
-    </article>
+      <article class="why-item"><h3>Strategic, Premium Content</h3><p>Our content is intentionally planned, on-brand, and built around your positioning, messaging, and goals — so your brand feels consistent everywhere it shows up.</p></article>
 
-    <article class="why-item">
-      <h3>Organic & Measurable Impact</h3>
-      <p>
-        We focus on building organic engagement, real connection, and measurable impact. The goal is sustainable
-        growth — not vanity metrics — so you can clearly see how your presence is moving the needle for your business.
-      </p>
-    </article>
+      <article class="why-item"><h3>Organic & Measurable Impact</h3><p>We focus on building organic engagement, real connection, and measurable impact. The goal is sustainable growth — not vanity metrics — so you can clearly see how your presence is moving the needle for your business.</p></article>
+    </div>
   </div>
 </section>
 
-  <section class="about" id="about" data-aos="fade-right" data-aos-easing="ease-out-quart">
+<!-- ABOUT (replace your existing <section class="about" ...>) -->
+<section class="about collapsible" id="about" data-aos="fade-right" data-aos-easing="ease-out-quart" aria-labelledby="about-title" role="region">
+  <button class="collapsible-toggle" id="about-title" aria-expanded="false" aria-controls="about-content">
     <h2>About Us</h2>
+    <span class="chev" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="about-content" class="collapsible-content" aria-hidden="true">
     <p>
       At Synqly, we believe that strong connections empower stronger outcomes. We're here to align innovators,
       creators, and organizations to accelerate progress through seamless collaboration. Our mission is to bridge the
@@ -127,8 +115,8 @@
       committed to delivering exceptional value and fostering long-term relationships built on trust and mutual
       success.
     </p>
-  </section>
-
+  </div>
+</section>
   <section class="contact" data-aos="zoom-in" aria-labelledby="contact-us-title">
     <h2 id="contact-us-title">Contact Us</h2>
     <form id="contactForm" novalidate>
@@ -189,77 +177,61 @@
   </script>
 
   <script>
-    (function () {
-      const form = document.getElementById("contactForm");
-      const submitBtn = document.getElementById("contactSubmit");
-      const statusEl = document.getElementById("formStatus");
+  (function () {
+    // Target collapsible sections
+    const collapsibles = document.querySelectorAll('.collapsible');
 
-      function setStatus(message, type = "info", show = true) {
-        statusEl.hidden = !show;
-        statusEl.textContent = message;
-        statusEl.className = "form-status " + (type === "error" ? "status-error" : (type === "success" ? "status-success" : "status-info"));
+    collapsibles.forEach(section => {
+      const toggle = section.querySelector('.collapsible-toggle');
+      const content = section.querySelector('.collapsible-content');
+
+      // Utility to set state
+      function setExpanded(expanded) {
+        section.classList.toggle('expanded', expanded);
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
       }
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        // simple built-in validation check
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
-
-        submitBtn.disabled = true;
-        submitBtn.setAttribute("aria-busy", "true");
-        setStatus("Sending message…", "info", true);
-
-        const data = {
-          name: document.getElementById("name").value.trim(),
-          email: document.getElementById("email").value.trim(),
-          phone: document.getElementById("phone").value.trim(),
-          identity: document.getElementById("identity").value
-        };
-
-        fetch("https://synqly-backend.onrender.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data),
-        })
-          .then(async response => {
-            let json;
-            // attempt to parse JSON; if parsing fails, create a fallback
-            try {
-              json = await response.json();
-            } catch (err) {
-              json = { status: response.ok ? 'success' : 'error', message: response.statusText || 'Unexpected response' };
-            }
-            if (!response.ok) {
-              throw new Error(json.message || 'Network response was not ok');
-            }
-            return json;
-          })
-          .then(data => {
-            if (data.status === 'success') {
-              setStatus("Message sent — thank you! We'll get back to you soon.", "success", true);
-              form.reset();
-            } else {
-              setStatus("Error: " + (data.message || "Unable to submit form."), "error", true);
-            }
-          })
-          .catch(error => {
-            console.error("Form submission error:", error);
-            setStatus("There was an error submitting the form: " + error.message, "error", true);
-          })
-          .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.removeAttribute("aria-busy");
-            // optional: clear message after 8s
-            setTimeout(() => { setStatus("", "info", false); }, 8000);
-          });
+      // Mouse enter/leave open/close
+      let hoverTimeout;
+      section.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+        setExpanded(true);
       });
-    })();
-  </script>
+      section.addEventListener('mouseleave', () => {
+        // small delay so it feels less jumpy
+        hoverTimeout = setTimeout(() => setExpanded(false), 280);
+      });
+
+      // Toggle via click (for keyboard and touch)
+      toggle.addEventListener('click', (e) => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        setExpanded(!isExpanded);
+      });
+
+      // keyboard: open on focus, close on blur
+      toggle.addEventListener('focus', () => setExpanded(true));
+      toggle.addEventListener('blur', () => {
+        // keep it open if focus moved inside content
+        setTimeout(() => {
+          if (!section.contains(document.activeElement)) setExpanded(false);
+        }, 60);
+      });
+
+      // If user tabs into any focusable inside content, keep expanded
+      content.addEventListener('focusin', () => setExpanded(true));
+      content.addEventListener('focusout', () => {
+        setTimeout(() => {
+          if (!section.contains(document.activeElement)) setExpanded(false);
+        }, 60);
+      });
+
+      // Initial collapsed
+      setExpanded(false);
+    });
+  })();
+</script>
+
 
 </body>
 
